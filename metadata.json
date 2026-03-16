@@ -1,0 +1,5 @@
+{
+  "name": "NSCT 2026 Preparatory Quiz",
+  "description": "An interactive, minimalist quiz application designed to prepare candidates for the National Skills Competency Test (NSCT) 2026. Features a representative sample from a 1000+ question database with detailed rationales for correct and incorrect answers.",
+  "requestFramePermissions": []
+}
