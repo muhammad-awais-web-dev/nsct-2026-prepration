@@ -38,9 +38,12 @@ export default function GithubPopup() {
             </button>
 
             <div className="flex justify-center mb-6">
-              <div className="p-4 bg-neutral-900 rounded-full text-white">
-                <Github className="w-8 h-8" />
-              </div>
+              <img 
+                src="https://github.com/muhammad-awais-web-dev.png" 
+                alt="Muhammad Awais" 
+                className="w-24 h-24 rounded-full object-cover border-4 border-neutral-100 shadow-lg"
+                referrerPolicy="no-referrer"
+              />
             </div>
 
             <h3 className="text-2xl font-bold text-neutral-900 mb-2">Support the Project!</h3>

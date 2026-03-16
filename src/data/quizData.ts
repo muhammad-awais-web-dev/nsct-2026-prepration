@@ -320,15 +320,6 @@ export const quizData: Record<string, Category> = {
         ]
       },
       {
-        q: "If 5 machines take 5 minutes to make 5 widgets, how long would it take 100 machines to make 100 widgets?",
-        options: [
-          { text: "100 minutes", isCorrect: false, feedback: "Incorrect. This is a common intuition trap." },
-          { text: "5 minutes", isCorrect: true, feedback: "Correct. If 5 machines make 5 widgets in 5 minutes, it means 1 machine makes 1 widget in 5 minutes. So 100 machines will make 100 widgets in the same 5 minutes." },
-          { text: "1 minute", isCorrect: false, feedback: "Incorrect. Each machine still takes 5 minutes to produce its widget." },
-          { text: "50 minutes", isCorrect: false, feedback: "Incorrect. The rate per machine is constant." }
-        ]
-      },
-      {
         q: "A train 120 meters long passes a telegraph post in 6 seconds. The speed of the train is:",
         options: [
           { text: "60 km/hr", isCorrect: false, feedback: "Incorrect. Speed = Distance / Time = 120/6 = 20 m/s. 20 * 18/5 = 72 km/hr." },
@@ -1937,15 +1928,6 @@ export const quizData: Record<string, Category> = {
         ]
       },
       {
-        q: "What is 'Server-Side Rendering' (SSR)?",
-        options: [
-          { text: "Rendering the website on the user's computer.", isCorrect: false, feedback: "Incorrect. This is 'Client-Side Rendering'." },
-          { text: "The process of rendering a web page on the server and sending the fully rendered HTML to the client.", isCorrect: true, feedback: "Correct. SSR improves SEO and initial page load speed for content-heavy sites." },
-          { text: "A technique for rendering 3D graphics on a server.", isCorrect: false, feedback: "Incorrect. This is 'Server-Side Graphics Rendering'." },
-          { text: "A method for storing server logs in a readable format.", isCorrect: false, feedback: "Incorrect. This is 'Log Management'." }
-        ]
-      },
-      {
         q: "What is 'Static Site Generation' (SSG)?",
         options: [
           { text: "Generating a website that never changes.", isCorrect: false, feedback: "Incorrect. Static sites can be updated by rebuilding them." },
@@ -3371,39 +3353,12 @@ export const quizData: Record<string, Category> = {
         ]
       },
       {
-        q: "What is a 'Database Trigger'?",
-        options: [
-          { text: "A procedural code that is automatically executed in response to certain events on a particular table or view.", isCorrect: true, feedback: "Correct. Triggers are used to maintain integrity, log changes, or enforce complex business rules automatically." },
-          { text: "A button in the database UI to start a query.", isCorrect: false, feedback: "Incorrect. Triggers are backend code, not UI elements." },
-          { text: "A type of index that triggers faster searches.", isCorrect: false, feedback: "Incorrect. Indexes and triggers serve different purposes." },
-          { text: "A command to shut down the database.", isCorrect: false, feedback: "Incorrect. Triggers react to data modifications (INSERT, UPDATE, DELETE)." }
-        ]
-      },
-      {
-        q: "What is a 'Stored Procedure'?",
-        options: [
-          { text: "A prepared SQL code that you can save, so the code can be reused over and over again.", isCorrect: true, feedback: "Correct. Stored procedures encapsulate logic on the database server, improving performance and security." },
-          { text: "A procedure for storing backups.", isCorrect: false, feedback: "Incorrect. It refers to executable code, not backup processes." },
-          { text: "A temporary table used for complex queries.", isCorrect: false, feedback: "Incorrect. That describes a temporary table or CTE." },
-          { text: "A method for storing data in memory.", isCorrect: false, feedback: "Incorrect. Stored procedures are logic, not storage mechanisms." }
-        ]
-      },
-      {
         q: "What is the primary purpose of 'Database Normalization'?",
         options: [
           { text: "To reduce data redundancy and improve data integrity.", isCorrect: true, feedback: "Correct. Normalization organizes data to minimize duplication and ensure dependencies make sense." },
           { text: "To make queries run faster.", isCorrect: false, feedback: "Incorrect. Normalization often requires more joins, which can sometimes slow down read queries." },
           { text: "To encrypt sensitive data.", isCorrect: false, feedback: "Incorrect. Normalization is about structure, not encryption." },
           { text: "To compress the database file size.", isCorrect: false, feedback: "Incorrect. While it reduces redundancy, compression is a separate physical storage technique." }
-        ]
-      },
-      {
-        q: "What is 'Denormalization'?",
-        options: [
-          { text: "The process of trying to improve the read performance of a database, at the expense of losing some write performance, by adding redundant copies of data.", isCorrect: true, feedback: "Correct. Denormalization intentionally introduces redundancy to avoid complex joins and speed up reads." },
-          { text: "The process of removing all normal forms from a database.", isCorrect: false, feedback: "Incorrect. It's a strategic optimization, not a complete removal of structure." },
-          { text: "A technique to make data completely unstructured.", isCorrect: false, feedback: "Incorrect. Denormalized data is still structured, just with intentional redundancy." },
-          { text: "A method to delete duplicate records.", isCorrect: false, feedback: "Incorrect. Denormalization *adds* duplicate data for performance." }
         ]
       },
       {
@@ -3497,15 +3452,6 @@ export const quizData: Record<string, Category> = {
         ]
       },
       {
-        q: "What is a 'Composite Key'?",
-        options: [
-          { text: "A primary key that consists of two or more attributes that uniquely identify an entity occurrence.", isCorrect: true, feedback: "Correct. When a single column isn't unique enough, multiple columns can form a composite key." },
-          { text: "A key made of composite materials.", isCorrect: false, feedback: "Incorrect. This is a physical materials concept." },
-          { text: "A key that combines a primary key and a foreign key.", isCorrect: false, feedback: "Incorrect. A composite key is just a multi-column primary key." },
-          { text: "A key used to encrypt composite data types.", isCorrect: false, feedback: "Incorrect. It's for identification, not encryption." }
-        ]
-      },
-      {
         q: "What is an 'Index' in a database?",
         options: [
           { text: "A data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and storage space.", isCorrect: true, feedback: "Correct. Indexes work like a book's index, allowing fast lookups without scanning the whole table." },
@@ -3584,15 +3530,6 @@ export const quizData: Record<string, Category> = {
           { text: "A technique for breaking database security.", isCorrect: false, feedback: "Incorrect. It's a scaling technique." },
           { text: "The process of deleting old data.", isCorrect: false, feedback: "Incorrect. That's archiving or purging." },
           { text: "A method for encrypting data fragments.", isCorrect: false, feedback: "Incorrect. Sharding is about distribution, not encryption." }
-        ]
-      },
-      {
-        q: "What is a 'Deadlock' in a database?",
-        options: [
-          { text: "A situation where two or more transactions are waiting for each other to release locks, resulting in a standstill.", isCorrect: true, feedback: "Correct. Deadlocks require the database management system to intervene and kill one of the transactions." },
-          { text: "When the database server crashes completely.", isCorrect: false, feedback: "Incorrect. A deadlock is a logical standstill, not a hardware crash." },
-          { text: "A lock that cannot be removed by an administrator.", isCorrect: false, feedback: "Incorrect. Administrators can resolve deadlocks." },
-          { text: "When a query takes too long to execute.", isCorrect: false, feedback: "Incorrect. That's a slow query, which might cause locks, but isn't a deadlock itself." }
         ]
       }
     ]

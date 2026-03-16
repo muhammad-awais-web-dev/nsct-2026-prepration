@@ -3,8 +3,8 @@ import Dashboard from './components/Dashboard';
 import Quiz from './components/Quiz';
 import Results from './components/Results';
 import GithubPopup from './components/GithubPopup';
-import SettingsModal from './components/SettingsModal';
 import { quizData } from './data/quizData';
+import { Github } from 'lucide-react';
 
 export type ViewState = 'dashboard' | 'quiz' | 'results';
 
@@ -33,7 +33,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900 font-sans selection:bg-neutral-200">
+    <div className="min-h-screen flex flex-col bg-white text-neutral-900 font-sans selection:bg-neutral-200">
       <GithubPopup />
       <header className="border-b border-neutral-200 py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 bg-white/80 backdrop-blur-sm z-50">
         <div 
@@ -44,7 +44,6 @@ export default function App() {
           <span>2026</span>
         </div>
         <div className="flex items-center gap-6">
-          <SettingsModal />
           {currentView !== 'dashboard' && (
             <button 
               onClick={handleReturnToDashboard}
@@ -56,7 +55,7 @@ export default function App() {
         </div>
       </header>
 
-      <main className="max-w-5xl mx-auto px-6 py-12 md:py-20">
+      <main className="max-w-5xl mx-auto px-6 py-12 md:py-20 w-full flex-grow">
         {currentView === 'dashboard' && (
           <Dashboard onStartQuiz={handleStartQuiz} data={quizData} />
         )}
@@ -77,8 +76,17 @@ export default function App() {
         )}
       </main>
       
-      <footer className="text-center py-8 text-neutral-400 text-xs border-t border-neutral-100 mt-auto">
-        National Skills Competency Test (NSCT) 2026 Preparatory Module
+      <footer className="text-center py-8 text-neutral-400 text-xs border-t border-neutral-100 mt-auto flex flex-col items-center justify-center gap-4">
+        <div>National Skills Competency Test (NSCT) 2026 Preparatory Module</div>
+        <a 
+          href="https://github.com" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 text-neutral-500 hover:text-neutral-900 transition-colors"
+        >
+          <Github className="w-4 h-4" />
+          <span>View on GitHub</span>
+        </a>
       </footer>
     </div>
   );

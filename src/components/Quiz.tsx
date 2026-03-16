@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Category, Option, Question as QuestionType } from '../data/quizData';
-import { generateQuestions } from '../data/geminiService';
-import { ArrowRight, CheckCircle2, XCircle, Loader2, Sparkles } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, XCircle } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -14,53 +13,35 @@ interface QuizProps {
 export default function Quiz({ category, onFinish }: QuizProps) {
   const [questions, setQuestions] = useState<QuestionType[]>(category.questions);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | null>(null);
+  const [answers, setAnswers] = useState<Record<number, number>>({});
   const [score, setScore] = useState(0);
-  const [isAnswered, setIsAnswered] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isGenerating, setIsGenerating] = useState(false);
-  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const currentQuestion = questions[currentIndex];
+  const selectedOptionIndex = answers[currentIndex] !== undefined ? answers[currentIndex] : null;
+  const isAnswered = selectedOptionIndex !== null;
 
   const handleOptionSelect = (index: number) => {
     if (isAnswered) return;
     
-    setSelectedOptionIndex(index);
-    setIsAnswered(true);
+    setAnswers(prev => ({ ...prev, [currentIndex]: index }));
     
     if (currentQuestion.options[index].isCorrect) {
       setScore(prev => prev + 1);
     }
   };
 
-  const handleNext = async () => {
-    if (currentIndex < questions.length - 1) {
-      setCurrentIndex(prev => prev + 1);
-      setSelectedOptionIndex(null);
-      setIsAnswered(false);
-      setErrorMsg(null);
-    } else {
-      // If we reach the end of static questions, ask if they want to generate more or finish
-      onFinish(score, questions.length);
+  const handlePrevious = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex(prev => prev - 1);
     }
   };
 
-  const handleGenerateMore = async () => {
-    setIsGenerating(true);
-    setErrorMsg(null);
-    try {
-      const newQuestions = await generateQuestions(category.name, 5);
-      if (newQuestions.length > 0) {
-        setQuestions(prev => [...prev, ...newQuestions]);
-        setCurrentIndex(prev => prev + 1);
-        setSelectedOptionIndex(null);
-        setIsAnswered(false);
-      }
-    } catch (error: any) {
-      setErrorMsg(error.message || "Failed to generate questions. Please check your API key.");
-    } finally {
-      setIsGenerating(false);
+  const handleNext = async () => {
+    if (currentIndex < questions.length - 1) {
+      setCurrentIndex(prev => prev + 1);
+    } else {
+      // If we reach the end of static questions, finish
+      onFinish(score, questions.length);
     }
   };
 
@@ -89,12 +70,6 @@ export default function Quiz({ category, onFinish }: QuizProps) {
       <div className="mb-8 flex justify-between items-center">
         <h2 className="text-sm font-bold uppercase tracking-wider text-neutral-500 flex items-center gap-2">
           {category.name}
-          {currentIndex >= category.questions.length && (
-            <span className="flex items-center gap-1 text-indigo-500 bg-indigo-50 px-2 py-0.5 rounded text-[10px]">
-              <Sparkles className="w-3 h-3" />
-              AI Generated
-            </span>
-          )}
         </h2>
         <div className="text-sm font-mono bg-neutral-100 px-3 py-1 rounded-full border border-neutral-200 text-neutral-600">
           Question {currentIndex + 1} of {questions.length}
@@ -118,7 +93,7 @@ export default function Quiz({ category, onFinish }: QuizProps) {
             {currentQuestion.options.map((option, index) => (
               <button
                 key={index}
-                disabled={isAnswered || isGenerating}
+                disabled={isAnswered}
                 onClick={() => handleOptionSelect(index)}
                 className={twMerge(
                   "w-full text-left p-5 rounded-xl border transition-all duration-200 flex items-start gap-4",
@@ -185,49 +160,26 @@ export default function Quiz({ category, onFinish }: QuizProps) {
           </AnimatePresence>
 
           <div className="mt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div className="text-xs text-neutral-400 font-medium">
-              {currentIndex === questions.length - 1 && !isGenerating && !errorMsg && (
-                <span className="flex items-center gap-1">
-                  <Sparkles className="w-3 h-3 text-indigo-400" />
-                  Reached end of static set. Generate more?
-                </span>
-              )}
-              {errorMsg && (
-                <span className="flex items-center gap-1 text-red-500">
-                  <XCircle className="w-3 h-3" />
-                  {errorMsg}
-                </span>
-              )}
-            </div>
             <div className="flex gap-3 w-full sm:w-auto">
-              {currentIndex === questions.length - 1 && (
+              {currentIndex > 0 && (
                 <button
-                  onClick={handleGenerateMore}
-                  disabled={isGenerating || !isAnswered}
-                  className={clsx(
-                    "flex-grow sm:flex-grow-0 flex items-center justify-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-200 border border-indigo-200",
-                    isGenerating ? "bg-indigo-50 text-indigo-400" : "bg-white text-indigo-600 hover:bg-indigo-50"
-                  )}
+                  onClick={handlePrevious}
+                  className="flex items-center justify-center gap-2 px-6 py-3 rounded-full font-bold transition-all duration-200 bg-neutral-100 text-neutral-600 hover:bg-neutral-200"
                 >
-                  {isGenerating ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      Generating...
-                    </>
-                  ) : (
-                    <>
-                      <Sparkles className="w-4 h-4" />
-                      Generate 5 More
-                    </>
-                  )}
+                  <ArrowLeft className="w-4 h-4" />
+                  Previous
                 </button>
               )}
+            </div>
+            <div className="text-xs text-neutral-400 font-medium text-center">
+            </div>
+            <div className="flex gap-3 w-full sm:w-auto">
               <button
                 onClick={handleNext}
-                disabled={!isAnswered || isGenerating}
+                disabled={!isAnswered}
                 className={clsx(
                   "flex-grow sm:flex-grow-0 flex items-center justify-center gap-2 px-8 py-3 rounded-full font-bold transition-all duration-200",
-                  isAnswered && !isGenerating
+                  isAnswered
                     ? "bg-neutral-900 text-white hover:bg-neutral-800 hover:shadow-md" 
                     : "bg-neutral-100 text-neutral-400 cursor-not-allowed"
                 )}
