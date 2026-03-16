@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Dashboard from './components/Dashboard';
 import Quiz from './components/Quiz';
 import Results from './components/Results';
+import GithubPopup from './components/GithubPopup';
 import { quizData } from './data/quizData';
 
 export type ViewState = 'dashboard' | 'quiz' | 'results';
@@ -32,6 +33,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-white text-neutral-900 font-sans selection:bg-neutral-200">
+      <GithubPopup />
       <header className="border-b border-neutral-200 py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 bg-white/80 backdrop-blur-sm z-50">
         <div 
           className="text-xl font-bold tracking-tight cursor-pointer flex items-center gap-2"
