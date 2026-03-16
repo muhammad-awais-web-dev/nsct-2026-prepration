@@ -1,9 +1,16 @@
 import { GoogleGenAI, Type } from "@google/genai";
 import { Question } from "./quizData";
-
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
+import { getCookie } from "../components/SettingsModal";
 
 export async function generateQuestions(category: string, count: number = 5): Promise<Question[]> {
+  const apiKey = getCookie('gemini_api_key');
+  
+  if (!apiKey) {
+    throw new Error("API key not found. Please set your Gemini API key in the settings.");
+  }
+
+  const ai = new GoogleGenAI({ apiKey });
+
   const prompt = `Generate ${count} high-quality multiple-choice questions for the NSCT 2026 (National Skills Competency Test) in the category: "${category}". 
   
   Each question must have:

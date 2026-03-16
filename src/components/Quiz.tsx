@@ -19,6 +19,7 @@ export default function Quiz({ category, onFinish }: QuizProps) {
   const [isAnswered, setIsAnswered] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   const currentQuestion = questions[currentIndex];
 
@@ -38,6 +39,7 @@ export default function Quiz({ category, onFinish }: QuizProps) {
       setCurrentIndex(prev => prev + 1);
       setSelectedOptionIndex(null);
       setIsAnswered(false);
+      setErrorMsg(null);
     } else {
       // If we reach the end of static questions, ask if they want to generate more or finish
       onFinish(score, questions.length);
@@ -46,6 +48,7 @@ export default function Quiz({ category, onFinish }: QuizProps) {
 
   const handleGenerateMore = async () => {
     setIsGenerating(true);
+    setErrorMsg(null);
     try {
       const newQuestions = await generateQuestions(category.name, 5);
       if (newQuestions.length > 0) {
@@ -54,6 +57,8 @@ export default function Quiz({ category, onFinish }: QuizProps) {
         setSelectedOptionIndex(null);
         setIsAnswered(false);
       }
+    } catch (error: any) {
+      setErrorMsg(error.message || "Failed to generate questions. Please check your API key.");
     } finally {
       setIsGenerating(false);
     }
@@ -181,10 +186,16 @@ export default function Quiz({ category, onFinish }: QuizProps) {
 
           <div className="mt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div className="text-xs text-neutral-400 font-medium">
-              {currentIndex === questions.length - 1 && !isGenerating && (
+              {currentIndex === questions.length - 1 && !isGenerating && !errorMsg && (
                 <span className="flex items-center gap-1">
                   <Sparkles className="w-3 h-3 text-indigo-400" />
                   Reached end of static set. Generate more?
+                </span>
+              )}
+              {errorMsg && (
+                <span className="flex items-center gap-1 text-red-500">
+                  <XCircle className="w-3 h-3" />
+                  {errorMsg}
                 </span>
               )}
             </div>

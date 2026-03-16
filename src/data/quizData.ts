@@ -338,12 +338,228 @@ export const quizData: Record<string, Category> = {
         ]
       },
       {
-        q: "In a row of trees, one tree is 7th from either end of the row. How many trees are there in the row?",
+        q: "A clock is started at noon. By 10 minutes past 5, the hour hand has turned through:",
         options: [
-          { text: "11", isCorrect: false, feedback: "Incorrect. If it's 7th from both ends, there are 6 trees to its left and 6 to its right." },
-          { text: "13", isCorrect: true, feedback: "Correct. 6 trees + the tree itself + 6 trees = 13 trees. Or (7 + 7) - 1 = 13." },
-          { text: "14", isCorrect: false, feedback: "Incorrect. You counted the middle tree twice." },
-          { text: "15", isCorrect: false, feedback: "Incorrect. Check the count again." }
+          { text: "145 degrees", isCorrect: false, feedback: "Incorrect. The hour hand moves 30 degrees per hour and 0.5 degrees per minute." },
+          { text: "150 degrees", isCorrect: false, feedback: "Incorrect. This is only the angle for 5 hours." },
+          { text: "155 degrees", isCorrect: true, feedback: "Correct. 5 hours = 150 degrees. 10 minutes = 5 degrees. Total = 155 degrees." },
+          { text: "160 degrees", isCorrect: false, feedback: "Incorrect. Check the calculation for the minutes." }
+        ]
+      },
+      {
+        q: "The sum of ages of 5 children born at the intervals of 3 years each is 50 years. What is the age of the youngest child?",
+        options: [
+          { text: "4 years", isCorrect: true, feedback: "Correct. Let ages be x, x+3, x+6, x+9, x+12. Sum = 5x + 30 = 50. 5x = 20, x = 4." },
+          { text: "8 years", isCorrect: false, feedback: "Incorrect. If youngest is 8, sum is 8+11+14+17+20 = 70." },
+          { text: "10 years", isCorrect: false, feedback: "Incorrect. If youngest is 10, sum is 10+13+16+19+22 = 80." },
+          { text: "None of these", isCorrect: false, feedback: "Incorrect. The answer is 4." }
+        ]
+      },
+      {
+        q: "A father said to his son, 'I was as old as you are at the present at the time of your birth'. If the father's age is 38 years now, the son's age five years back was:",
+        options: [
+          { text: "14 years", isCorrect: true, feedback: "Correct. Let son's present age be x. Father's age at son's birth was 38-x. Given 38-x = x, so 2x = 38, x = 19. Son's age 5 years back = 19-5 = 14." },
+          { text: "19 years", isCorrect: false, feedback: "Incorrect. This is the son's present age." },
+          { text: "33 years", isCorrect: false, feedback: "Incorrect. This is the father's age 5 years back." },
+          { text: "38 years", isCorrect: false, feedback: "Incorrect. This is the father's present age." }
+        ]
+      },
+      {
+        q: "A is two years older than B who is twice as old as C. If the total of the ages of A, B and C be 27, then how old is B?",
+        options: [
+          { text: "7", isCorrect: false, feedback: "Incorrect. If B=7, C=3.5, A=9. Sum = 19.5" },
+          { text: "8", isCorrect: false, feedback: "Incorrect. If B=8, C=4, A=10. Sum = 22" },
+          { text: "9", isCorrect: false, feedback: "Incorrect. If B=9, C=4.5, A=11. Sum = 24.5" },
+          { text: "10", isCorrect: true, feedback: "Correct. Let C=x. B=2x. A=2x+2. Sum = x + 2x + 2x + 2 = 5x + 2 = 27. 5x = 25, x = 5. B = 2x = 10." }
+        ]
+      },
+      {
+        q: "Present ages of Sameer and Anand are in the ratio of 5 : 4 respectively. Three years hence, the ratio of their ages will become 11 : 9 respectively. What is Anand's present age in years?",
+        options: [
+          { text: "24", isCorrect: true, feedback: "Correct. Let ages be 5x and 4x. (5x+3)/(4x+3) = 11/9. 45x + 27 = 44x + 33. x = 6. Anand's age = 4x = 24." },
+          { text: "27", isCorrect: false, feedback: "Incorrect. This is Anand's age 3 years hence." },
+          { text: "40", isCorrect: false, feedback: "Incorrect. This is not Anand's age." },
+          { text: "Cannot be determined", isCorrect: false, feedback: "Incorrect. The age can be determined." }
+        ]
+      },
+      {
+        q: "Six years ago, the ratio of the ages of Kunal and Sagar was 6 : 5. Four years hence, the ratio of their ages will be 11 : 10. What is Sagar's age at present?",
+        options: [
+          { text: "16 years", isCorrect: true, feedback: "Correct. Let ages 6 yrs ago be 6x and 5x. Present ages: 6x+6, 5x+6. In 4 yrs: (6x+10)/(5x+10) = 11/10. 60x+100 = 55x+110. 5x = 10, x = 2. Sagar's present age = 5x+6 = 16." },
+          { text: "18 years", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "20 years", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "Cannot be determined", isCorrect: false, feedback: "Incorrect. The age can be determined." }
+        ]
+      },
+      {
+        q: "The sum of the present ages of a father and his son is 60 years. Six years ago, father's age was five times the age of the son. After 6 years, son's age will be:",
+        options: [
+          { text: "12 years", isCorrect: false, feedback: "Incorrect. This is the son's present age." },
+          { text: "14 years", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "18 years", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "20 years", isCorrect: true, feedback: "Correct. Let present ages be F and S. F+S=60. F-6 = 5(S-6). (60-S)-6 = 5S-30. 54-S = 5S-30. 6S = 84. S = 14. Son's age after 6 years = 14+6 = 20." }
+        ]
+      },
+      {
+        q: "At present, the ratio between the ages of Arun and Deepak is 4 : 3. After 6 years, Arun's age will be 26 years. What is the age of Deepak at present?",
+        options: [
+          { text: "12 years", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "15 years", isCorrect: true, feedback: "Correct. Let present ages be 4x and 3x. 4x + 6 = 26. 4x = 20, x = 5. Deepak's age = 3x = 15." },
+          { text: "19 and half", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "21 years", isCorrect: false, feedback: "Incorrect. Check the calculation." }
+        ]
+      },
+      {
+        q: "Sachin is younger than Rahul by 7 years. If their ages are in the respective ratio of 7 : 9, how old is Sachin?",
+        options: [
+          { text: "16 years", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "18 years", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "28 years", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "24.5 years", isCorrect: true, feedback: "Correct. Let ages be 7x and 9x. 9x - 7x = 7. 2x = 7. x = 3.5. Sachin's age = 7x = 7 * 3.5 = 24.5." }
+        ]
+      },
+      {
+        q: "The present ages of three persons in proportions 4 : 7 : 9. Eight years ago, the sum of their ages was 56. Find their present ages (in years).",
+        options: [
+          { text: "8, 20, 28", isCorrect: false, feedback: "Incorrect. The ratio is not 4:7:9." },
+          { text: "16, 28, 36", isCorrect: true, feedback: "Correct. Let present ages be 4x, 7x, 9x. (4x-8) + (7x-8) + (9x-8) = 56. 20x - 24 = 56. 20x = 80. x = 4. Ages are 16, 28, 36." },
+          { text: "20, 35, 45", isCorrect: false, feedback: "Incorrect. Sum 8 years ago would be 12+27+37 = 76." },
+          { text: "None of these", isCorrect: false, feedback: "Incorrect. The answer is 16, 28, 36." }
+        ]
+      },
+      {
+        q: "Ayesha's father was 38 years of age when she was born while her mother was 36 years old when her brother four years younger to her was born. What is the difference between the ages of her parents?",
+        options: [
+          { text: "2 years", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "4 years", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "6 years", isCorrect: true, feedback: "Correct. Mother's age when Ayesha's brother was born = 36. Father's age when Ayesha's brother was born = 38 + 4 = 42. Difference = 42 - 36 = 6 years." },
+          { text: "8 years", isCorrect: false, feedback: "Incorrect. Check the calculation." }
+        ]
+      },
+      {
+        q: "A person crosses a 600 m long street in 5 minutes. What is his speed in km per hour?",
+        options: [
+          { text: "3.6", isCorrect: false, feedback: "Incorrect. Speed = 600m / 300s = 2 m/s." },
+          { text: "7.2", isCorrect: true, feedback: "Correct. Speed = 600m / (5*60)s = 2 m/s. In km/hr: 2 * (18/5) = 7.2 km/hr." },
+          { text: "8.4", isCorrect: false, feedback: "Incorrect. Check the conversion." },
+          { text: "10", isCorrect: false, feedback: "Incorrect. Check the conversion." }
+        ]
+      },
+      {
+        q: "An aeroplane covers a certain distance at a speed of 240 kmph in 5 hours. To cover the same distance in 1 2/3 hours, it must travel at a speed of:",
+        options: [
+          { text: "300 kmph", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "360 kmph", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "600 kmph", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "720 kmph", isCorrect: true, feedback: "Correct. Distance = 240 * 5 = 1200 km. Time = 5/3 hours. Speed = 1200 / (5/3) = 1200 * 3 / 5 = 720 kmph." }
+        ]
+      },
+      {
+        q: "If a person walks at 14 km/hr instead of 10 km/hr, he would have walked 20 km more. The actual distance travelled by him is:",
+        options: [
+          { text: "50 km", isCorrect: true, feedback: "Correct. Let actual distance be x. Time = x/10. If he walks at 14 km/hr, distance = x+20. Time = (x+20)/14. Since time is same: x/10 = (x+20)/14. 14x = 10x + 200. 4x = 200. x = 50." },
+          { text: "56 km", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "70 km", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "80 km", isCorrect: false, feedback: "Incorrect. Check the calculation." }
+        ]
+      },
+      {
+        q: "A train can travel 50% faster than a car. Both start from point A at the same time and reach point B 75 kms away from A at the same time. On the way, however, the train lost about 12.5 minutes while stopping at the stations. The speed of the car is:",
+        options: [
+          { text: "100 kmph", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "110 kmph", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "120 kmph", isCorrect: true, feedback: "Correct. Let car speed be x. Train speed = 1.5x. Time taken by car = 75/x. Time taken by train = 75/(1.5x) = 50/x. Difference = 12.5 mins = 12.5/60 hrs. 75/x - 50/x = 12.5/60. 25/x = 12.5/60. x = 25 * 60 / 12.5 = 120." },
+          { text: "130 kmph", isCorrect: false, feedback: "Incorrect. Check the calculation." }
+        ]
+      },
+      {
+        q: "Excluding stoppages, the speed of a bus is 54 kmph and including stoppages, it is 45 kmph. For how many minutes does the bus stop per hour?",
+        options: [
+          { text: "9", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "10", isCorrect: true, feedback: "Correct. Due to stoppages, it covers 9 km less per hour (54 - 45). Time taken to cover 9 km at 54 kmph = (9/54) * 60 minutes = 10 minutes." },
+          { text: "12", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "20", isCorrect: false, feedback: "Incorrect. Check the calculation." }
+        ]
+      },
+      {
+        q: "In a flight of 600 km, an aircraft was slowed down due to bad weather. Its average speed for the trip was reduced by 200 km/hr and the time of flight increased by 30 minutes. The duration of the flight is:",
+        options: [
+          { text: "1 hour", isCorrect: true, feedback: "Correct. Let original duration be t hrs. Original speed = 600/t. New speed = 600/(t+0.5). 600/t - 600/(t+0.5) = 200. Solving this gives t = 1." },
+          { text: "2 hours", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "3 hours", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "4 hours", isCorrect: false, feedback: "Incorrect. Check the calculation." }
+        ]
+      },
+      {
+        q: "A man complete a journey in 10 hours. He travels first half of the journey at the rate of 21 km/hr and second half at the rate of 24 km/hr. Find the total journey in km.",
+        options: [
+          { text: "220 km", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "224 km", isCorrect: true, feedback: "Correct. Let total distance be x. Time for first half = (x/2)/21. Time for second half = (x/2)/24. Total time = x/42 + x/48 = 10. (8x + 7x)/336 = 10. 15x = 3360. x = 224." },
+          { text: "230 km", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "234 km", isCorrect: false, feedback: "Incorrect. Check the calculation." }
+        ]
+      },
+      {
+        q: "The ratio between the speeds of two trains is 7 : 8. If the second train runs 400 km in 4 hours, then the speed of the first train is:",
+        options: [
+          { text: "70 km/hr", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "75 km/hr", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "84 km/hr", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "87.5 km/hr", isCorrect: true, feedback: "Correct. Speed of second train = 400/4 = 100 km/hr. Let speeds be 7x and 8x. 8x = 100 => x = 12.5. Speed of first train = 7 * 12.5 = 87.5 km/hr." }
+        ]
+      },
+      {
+        q: "A man on tour travels first 160 km at 64 km/hr and the next 160 km at 80 km/hr. The average speed for the first 320 km of the tour is:",
+        options: [
+          { text: "35.55 km/hr", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "36 km/hr", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "71.11 km/hr", isCorrect: true, feedback: "Correct. Total distance = 320 km. Total time = 160/64 + 160/80 = 2.5 + 2 = 4.5 hrs. Average speed = 320 / 4.5 = 71.11 km/hr." },
+          { text: "71 km/hr", isCorrect: false, feedback: "Incorrect. Check the calculation." }
+        ]
+      },
+      {
+        q: "A car traveling with 5/7 of its actual speed covers 42 km in 1 hr 40 min 48 sec. Find the actual speed of the car.",
+        options: [
+          { text: "17 6/7 km/hr", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "25 km/hr", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "30 km/hr", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "35 km/hr", isCorrect: true, feedback: "Correct. Time = 1 hr 40 min 48 sec = 1 + 40/60 + 48/3600 = 1 + 2/3 + 1/75 = 126/75 hrs. Speed = 42 / (126/75) = 25 km/hr. Let actual speed be x. 5/7 * x = 25. x = 35 km/hr." }
+        ]
+      },
+      {
+        q: "In covering a distance of 30 km, Abhay takes 2 hours more than Sameer. If Abhay doubles his speed, then he would take 1 hour less than Sameer. Abhay's speed is:",
+        options: [
+          { text: "5 kmph", isCorrect: true, feedback: "Correct. Let Abhay's speed be A and Sameer's be S. 30/A - 30/S = 2. 30/S - 30/(2A) = 1. Adding both: 30/A - 15/A = 3. 15/A = 3. A = 5." },
+          { text: "6 kmph", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "6.25 kmph", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "7.5 kmph", isCorrect: false, feedback: "Incorrect. Check the calculation." }
+        ]
+      },
+      {
+        q: "Robert is travelling on his cycle and has calculated to reach point A at 2 P.M. if he travels at 10 kmph, he will reach there at 12 noon if he travels at 15 kmph. At what speed must he travel to reach A at 1 P.M.?",
+        options: [
+          { text: "8 kmph", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "11 kmph", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "12 kmph", isCorrect: true, feedback: "Correct. Let distance be d and time taken at 10kmph be t. d/10 = t. d/15 = t - 2. So d/10 - d/15 = 2. d/30 = 2 => d = 60 km. t = 6 hrs. To reach at 1 PM, time = 5 hrs. Speed = 60/5 = 12 kmph." },
+          { text: "14 kmph", isCorrect: false, feedback: "Incorrect. Check the calculation." }
+        ]
+      },
+      {
+        q: "It takes eight hours for a 600 km journey, if 120 km is done by train and the rest by car. It takes 20 minutes more, if 200 km is done by train and the rest by car. The ratio of the speed of the train to that of the cars is:",
+        options: [
+          { text: "2 : 3", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "3 : 2", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "3 : 4", isCorrect: true, feedback: "Correct. Let train speed be T and car speed be C. 120/T + 480/C = 8. 200/T + 400/C = 25/3. Solving these gives T = 60, C = 80. Ratio = 60:80 = 3:4." },
+          { text: "4 : 3", isCorrect: false, feedback: "Incorrect. Check the calculation." }
+        ]
+      },
+      {
+        q: "A farmer travelled a distance of 61 km in 9 hours. He travelled partly on foot @ 4 km/hr and partly on bicycle @ 9 km/hr. The distance travelled on foot is:",
+        options: [
+          { text: "14 km", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "15 km", isCorrect: false, feedback: "Incorrect. Check the calculation." },
+          { text: "16 km", isCorrect: true, feedback: "Correct. Let distance on foot be x. Distance on bicycle = 61-x. x/4 + (61-x)/9 = 9. 9x + 244 - 4x = 324. 5x = 80. x = 16." },
+          { text: "17 km", isCorrect: false, feedback: "Incorrect. Check the calculation." }
         ]
       }
     ]
@@ -3155,12 +3371,228 @@ export const quizData: Record<string, Category> = {
         ]
       },
       {
-        q: "What is 'Eventual Consistency'?",
+        q: "What is a 'Database Trigger'?",
         options: [
-          { text: "A consistency model where the database will eventually become consistent, but not necessarily immediately.", isCorrect: true, feedback: "Correct. Eventual consistency is common in highly available distributed systems (like many NoSQL databases)." },
-          { text: "A way to make the database consistent eventually.", isCorrect: false, feedback: "Incorrect. This is a literal interpretation." },
-          { text: "A tool for automatically making the database consistent over time.", isCorrect: false, feedback: "Incorrect. It's a consistency model, not a tool." },
-          { text: "A method for organizing data in a database using eventual consistency.", isCorrect: false, feedback: "Incorrect. This is too vague." }
+          { text: "A procedural code that is automatically executed in response to certain events on a particular table or view.", isCorrect: true, feedback: "Correct. Triggers are used to maintain integrity, log changes, or enforce complex business rules automatically." },
+          { text: "A button in the database UI to start a query.", isCorrect: false, feedback: "Incorrect. Triggers are backend code, not UI elements." },
+          { text: "A type of index that triggers faster searches.", isCorrect: false, feedback: "Incorrect. Indexes and triggers serve different purposes." },
+          { text: "A command to shut down the database.", isCorrect: false, feedback: "Incorrect. Triggers react to data modifications (INSERT, UPDATE, DELETE)." }
+        ]
+      },
+      {
+        q: "What is a 'Stored Procedure'?",
+        options: [
+          { text: "A prepared SQL code that you can save, so the code can be reused over and over again.", isCorrect: true, feedback: "Correct. Stored procedures encapsulate logic on the database server, improving performance and security." },
+          { text: "A procedure for storing backups.", isCorrect: false, feedback: "Incorrect. It refers to executable code, not backup processes." },
+          { text: "A temporary table used for complex queries.", isCorrect: false, feedback: "Incorrect. That describes a temporary table or CTE." },
+          { text: "A method for storing data in memory.", isCorrect: false, feedback: "Incorrect. Stored procedures are logic, not storage mechanisms." }
+        ]
+      },
+      {
+        q: "What is the primary purpose of 'Database Normalization'?",
+        options: [
+          { text: "To reduce data redundancy and improve data integrity.", isCorrect: true, feedback: "Correct. Normalization organizes data to minimize duplication and ensure dependencies make sense." },
+          { text: "To make queries run faster.", isCorrect: false, feedback: "Incorrect. Normalization often requires more joins, which can sometimes slow down read queries." },
+          { text: "To encrypt sensitive data.", isCorrect: false, feedback: "Incorrect. Normalization is about structure, not encryption." },
+          { text: "To compress the database file size.", isCorrect: false, feedback: "Incorrect. While it reduces redundancy, compression is a separate physical storage technique." }
+        ]
+      },
+      {
+        q: "What is 'Denormalization'?",
+        options: [
+          { text: "The process of trying to improve the read performance of a database, at the expense of losing some write performance, by adding redundant copies of data.", isCorrect: true, feedback: "Correct. Denormalization intentionally introduces redundancy to avoid complex joins and speed up reads." },
+          { text: "The process of removing all normal forms from a database.", isCorrect: false, feedback: "Incorrect. It's a strategic optimization, not a complete removal of structure." },
+          { text: "A technique to make data completely unstructured.", isCorrect: false, feedback: "Incorrect. Denormalized data is still structured, just with intentional redundancy." },
+          { text: "A method to delete duplicate records.", isCorrect: false, feedback: "Incorrect. Denormalization *adds* duplicate data for performance." }
+        ]
+      },
+      {
+        q: "What does 'ACID' stand for in database systems?",
+        options: [
+          { text: "Atomicity, Consistency, Isolation, Durability", isCorrect: true, feedback: "Correct. These four properties guarantee that database transactions are processed reliably." },
+          { text: "Accuracy, Completeness, Integrity, Dependability", isCorrect: false, feedback: "Incorrect. These are good qualities, but not the ACID acronym." },
+          { text: "Array, Character, Integer, Double", isCorrect: false, feedback: "Incorrect. These are data types." },
+          { text: "Asynchronous, Concurrent, Isolated, Distributed", isCorrect: false, feedback: "Incorrect. These relate to system architecture, not transaction properties." }
+        ]
+      },
+      {
+        q: "In the context of ACID, what does 'Atomicity' mean?",
+        options: [
+          { text: "A transaction is treated as a single, indivisible logical unit of work; either all its operations are executed, or none are.", isCorrect: true, feedback: "Correct. Atomicity ensures 'all or nothing' execution." },
+          { text: "Data is stored at the atomic level for maximum compression.", isCorrect: false, feedback: "Incorrect. Atomicity refers to transactions, not physical storage." },
+          { text: "The database can handle atomic operations very quickly.", isCorrect: false, feedback: "Incorrect. It's about transaction completeness, not speed." },
+          { text: "Transactions are isolated from each other.", isCorrect: false, feedback: "Incorrect. That describes 'Isolation'." }
+        ]
+      },
+      {
+        q: "In the context of ACID, what does 'Consistency' mean?",
+        options: [
+          { text: "A transaction must transition the database from one valid state to another, maintaining all defined rules and constraints.", isCorrect: true, feedback: "Correct. Consistency ensures data integrity rules are never violated." },
+          { text: "The database always responds with the same data.", isCorrect: false, feedback: "Incorrect. Data changes over time; consistency refers to validity." },
+          { text: "All nodes in a distributed database have the exact same data at all times.", isCorrect: false, feedback: "Incorrect. That's strong consistency in distributed systems, but ACID consistency is about constraints." },
+          { text: "Transactions are executed in a consistent order.", isCorrect: false, feedback: "Incorrect. Execution order is related to Isolation and concurrency control." }
+        ]
+      },
+      {
+        q: "In the context of ACID, what does 'Isolation' mean?",
+        options: [
+          { text: "Concurrent execution of transactions leaves the database in the same state that would have been obtained if the transactions were executed sequentially.", isCorrect: true, feedback: "Correct. Isolation prevents concurrent transactions from interfering with each other." },
+          { text: "The database is isolated from the internet for security.", isCorrect: false, feedback: "Incorrect. Isolation refers to transaction concurrency, not network security." },
+          { text: "Each table is isolated in its own file.", isCorrect: false, feedback: "Incorrect. It's a logical transaction property, not physical storage." },
+          { text: "Transactions are isolated from hardware failures.", isCorrect: false, feedback: "Incorrect. That's closer to 'Durability'." }
+        ]
+      },
+      {
+        q: "In the context of ACID, what does 'Durability' mean?",
+        options: [
+          { text: "Once a transaction has been committed, it will remain committed even in the case of a system failure.", isCorrect: true, feedback: "Correct. Durability guarantees that completed transactions survive crashes." },
+          { text: "The database hardware is durable and long-lasting.", isCorrect: false, feedback: "Incorrect. It refers to data persistence, not hardware lifespan." },
+          { text: "Transactions can run for a very long duration.", isCorrect: false, feedback: "Incorrect. Durability is about permanence after completion." },
+          { text: "The database can handle a durable workload.", isCorrect: false, feedback: "Incorrect. This is a performance characteristic." }
+        ]
+      },
+      {
+        q: "What is the 'CAP Theorem'?",
+        options: [
+          { text: "It states that a distributed data store can simultaneously provide at most two out of three guarantees: Consistency, Availability, and Partition tolerance.", isCorrect: true, feedback: "Correct. The CAP theorem highlights the fundamental trade-offs in distributed systems." },
+          { text: "A theorem for calculating the maximum capacity of a database.", isCorrect: false, feedback: "Incorrect. CAP stands for Consistency, Availability, Partition tolerance." },
+          { text: "A rule that every database must have a CAP (Central Access Point).", isCorrect: false, feedback: "Incorrect. This is a fabricated concept." },
+          { text: "A theorem proving that relational databases are superior to NoSQL.", isCorrect: false, feedback: "Incorrect. CAP applies to all distributed data stores." }
+        ]
+      },
+      {
+        q: "In the CAP Theorem, what does 'Partition Tolerance' mean?",
+        options: [
+          { text: "The system continues to operate despite an arbitrary number of messages being dropped (or delayed) by the network between nodes.", isCorrect: true, feedback: "Correct. Partition tolerance means the system survives network failures." },
+          { text: "The database can be partitioned into smaller tables.", isCorrect: false, feedback: "Incorrect. This describes table partitioning, not network partition tolerance." },
+          { text: "The system tolerates users partitioning data incorrectly.", isCorrect: false, feedback: "Incorrect. It refers to network partitions." },
+          { text: "The database can run on multiple hard drive partitions.", isCorrect: false, feedback: "Incorrect. It's a network concept, not a disk concept." }
+        ]
+      },
+      {
+        q: "What is 'BASE' in the context of NoSQL databases?",
+        options: [
+          { text: "Basically Available, Soft state, Eventual consistency.", isCorrect: true, feedback: "Correct. BASE is an alternative to ACID, prioritizing availability over immediate consistency." },
+          { text: "Basic Access to Secure Environments.", isCorrect: false, feedback: "Incorrect. This is a fabricated acronym." },
+          { text: "Binary Array Storage Engine.", isCorrect: false, feedback: "Incorrect. This sounds like a storage mechanism." },
+          { text: "Backup And Security Engine.", isCorrect: false, feedback: "Incorrect. This is a fabricated acronym." }
+        ]
+      },
+      {
+        q: "What is a 'Primary Key'?",
+        options: [
+          { text: "A specific choice of a minimal set of attributes (columns) that uniquely specify a tuple (row) in a relation (table).", isCorrect: true, feedback: "Correct. The primary key guarantees uniqueness for every row." },
+          { text: "The first key you create in a database.", isCorrect: false, feedback: "Incorrect. 'Primary' refers to its role in identification, not creation order." },
+          { text: "A key used to encrypt the primary table.", isCorrect: false, feedback: "Incorrect. It's for identification, not encryption." },
+          { text: "The most important column in a table.", isCorrect: false, feedback: "Incorrect. While important, its specific function is unique identification." }
+        ]
+      },
+      {
+        q: "What is a 'Foreign Key'?",
+        options: [
+          { text: "A set of attributes in a table that refers to the primary key of another table, establishing a link between the data in the two tables.", isCorrect: true, feedback: "Correct. Foreign keys enforce referential integrity." },
+          { text: "A key used by foreign users to access the database.", isCorrect: false, feedback: "Incorrect. It's a relational concept, not an access control concept." },
+          { text: "A key that is not native to the database system.", isCorrect: false, feedback: "Incorrect. It's a standard database feature." },
+          { text: "A key used to connect to external APIs.", isCorrect: false, feedback: "Incorrect. It connects tables within a relational database." }
+        ]
+      },
+      {
+        q: "What is a 'Composite Key'?",
+        options: [
+          { text: "A primary key that consists of two or more attributes that uniquely identify an entity occurrence.", isCorrect: true, feedback: "Correct. When a single column isn't unique enough, multiple columns can form a composite key." },
+          { text: "A key made of composite materials.", isCorrect: false, feedback: "Incorrect. This is a physical materials concept." },
+          { text: "A key that combines a primary key and a foreign key.", isCorrect: false, feedback: "Incorrect. A composite key is just a multi-column primary key." },
+          { text: "A key used to encrypt composite data types.", isCorrect: false, feedback: "Incorrect. It's for identification, not encryption." }
+        ]
+      },
+      {
+        q: "What is an 'Index' in a database?",
+        options: [
+          { text: "A data structure that improves the speed of data retrieval operations on a database table at the cost of additional writes and storage space.", isCorrect: true, feedback: "Correct. Indexes work like a book's index, allowing fast lookups without scanning the whole table." },
+          { text: "A list of all tables in the database.", isCorrect: false, feedback: "Incorrect. That's a catalog or schema definition." },
+          { text: "A unique identifier for a row.", isCorrect: false, feedback: "Incorrect. That's a primary key (which usually has an index, but they are distinct concepts)." },
+          { text: "A backup of the database.", isCorrect: false, feedback: "Incorrect. Indexes speed up reads, they don't back up data." }
+        ]
+      },
+      {
+        q: "What is a 'B-Tree' (Balanced Tree) index?",
+        options: [
+          { text: "A self-balancing tree data structure that maintains sorted data and allows searches, sequential access, insertions, and deletions in logarithmic time.", isCorrect: true, feedback: "Correct. B-Trees are the most common default index type in relational databases." },
+          { text: "A tree structure used only for binary data.", isCorrect: false, feedback: "Incorrect. B-Trees handle various data types." },
+          { text: "A backup tree structure.", isCorrect: false, feedback: "Incorrect. It's an indexing structure." },
+          { text: "A tree that only has two branches per node.", isCorrect: false, feedback: "Incorrect. That's a binary tree. B-Trees can have many branches per node." }
+        ]
+      },
+      {
+        q: "What is a 'Hash Index'?",
+        options: [
+          { text: "An index that uses a hash function to map keys to specific locations, providing very fast exact-match lookups but poor performance for range queries.", isCorrect: true, feedback: "Correct. Hash indexes are O(1) for equality checks but useless for 'greater than' or 'less than' queries." },
+          { text: "An index that stores hashtags.", isCorrect: false, feedback: "Incorrect. It uses hash functions, not social media hashtags." },
+          { text: "An index used for encrypting passwords.", isCorrect: false, feedback: "Incorrect. While hashing is used for passwords, a hash index is for data retrieval." },
+          { text: "An index that is completely random.", isCorrect: false, feedback: "Incorrect. The hash function is deterministic." }
+        ]
+      },
+      {
+        q: "What is a 'View' in SQL?",
+        options: [
+          { text: "A virtual table based on the result-set of an SQL statement.", isCorrect: true, feedback: "Correct. Views simplify complex queries and can restrict access to specific rows or columns." },
+          { text: "A graphical representation of the database schema.", isCorrect: false, feedback: "Incorrect. That's an ER diagram." },
+          { text: "A tool for viewing database logs.", isCorrect: false, feedback: "Incorrect. Views are queryable virtual tables." },
+          { text: "A specific user interface for the database.", isCorrect: false, feedback: "Incorrect. Views exist at the database level, independent of the UI." }
+        ]
+      },
+      {
+        q: "What is a 'Materialized View'?",
+        options: [
+          { text: "A database object that contains the results of a query, physically stored on disk, and updated periodically.", isCorrect: true, feedback: "Correct. Unlike standard views, materialized views store data, offering faster read performance for complex aggregations at the cost of storage and update overhead." },
+          { text: "A view that is printed on paper.", isCorrect: false, feedback: "Incorrect. It refers to physical storage on disk." },
+          { text: "A view that can only contain material data types.", isCorrect: false, feedback: "Incorrect. It can contain any data type." },
+          { text: "A view that is automatically generated by the ORM.", isCorrect: false, feedback: "Incorrect. Materialized views are created explicitly in the database." }
+        ]
+      },
+      {
+        q: "What is a 'Transaction' in a database?",
+        options: [
+          { text: "A sequence of one or more SQL operations treated as a single logical unit of work.", isCorrect: true, feedback: "Correct. Transactions ensure that complex operations succeed or fail completely, maintaining data integrity." },
+          { text: "The process of buying a database license.", isCorrect: false, feedback: "Incorrect. It's a technical database operation." },
+          { text: "A single SELECT query.", isCorrect: false, feedback: "Incorrect. While a SELECT can be part of a transaction, a transaction usually implies modifications (INSERT/UPDATE/DELETE)." },
+          { text: "The transfer of data between two databases.", isCorrect: false, feedback: "Incorrect. That's data migration or replication." }
+        ]
+      },
+      {
+        q: "What does the 'COMMIT' command do?",
+        options: [
+          { text: "It permanently saves all changes made during the current transaction.", isCorrect: true, feedback: "Correct. COMMIT makes the transaction's modifications visible to other users and durable." },
+          { text: "It starts a new transaction.", isCorrect: false, feedback: "Incorrect. BEGIN or START TRANSACTION does that." },
+          { text: "It undoes all changes made during the current transaction.", isCorrect: false, feedback: "Incorrect. ROLLBACK does that." },
+          { text: "It commits the database schema to memory.", isCorrect: false, feedback: "Incorrect. It applies to data modifications." }
+        ]
+      },
+      {
+        q: "What does the 'ROLLBACK' command do?",
+        options: [
+          { text: "It undoes all changes made during the current transaction, restoring the database to its state before the transaction began.", isCorrect: true, feedback: "Correct. ROLLBACK is used when an error occurs or a business rule is violated during a transaction." },
+          { text: "It permanently saves all changes.", isCorrect: false, feedback: "Incorrect. COMMIT does that." },
+          { text: "It rolls the database back to yesterday's backup.", isCorrect: false, feedback: "Incorrect. It only affects the current, uncommitted transaction." },
+          { text: "It restarts the database server.", isCorrect: false, feedback: "Incorrect. It's a transaction control command." }
+        ]
+      },
+      {
+        q: "What is 'Database Sharding'?",
+        options: [
+          { text: "A type of horizontal partitioning that splits a large database into smaller, faster, more easily managed parts called shards.", isCorrect: true, feedback: "Correct. Sharding distributes data across multiple servers to handle massive scale." },
+          { text: "A technique for breaking database security.", isCorrect: false, feedback: "Incorrect. It's a scaling technique." },
+          { text: "The process of deleting old data.", isCorrect: false, feedback: "Incorrect. That's archiving or purging." },
+          { text: "A method for encrypting data fragments.", isCorrect: false, feedback: "Incorrect. Sharding is about distribution, not encryption." }
+        ]
+      },
+      {
+        q: "What is a 'Deadlock' in a database?",
+        options: [
+          { text: "A situation where two or more transactions are waiting for each other to release locks, resulting in a standstill.", isCorrect: true, feedback: "Correct. Deadlocks require the database management system to intervene and kill one of the transactions." },
+          { text: "When the database server crashes completely.", isCorrect: false, feedback: "Incorrect. A deadlock is a logical standstill, not a hardware crash." },
+          { text: "A lock that cannot be removed by an administrator.", isCorrect: false, feedback: "Incorrect. Administrators can resolve deadlocks." },
+          { text: "When a query takes too long to execute.", isCorrect: false, feedback: "Incorrect. That's a slow query, which might cause locks, but isn't a deadlock itself." }
         ]
       }
     ]

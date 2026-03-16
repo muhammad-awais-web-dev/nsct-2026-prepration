@@ -3,6 +3,7 @@ import Dashboard from './components/Dashboard';
 import Quiz from './components/Quiz';
 import Results from './components/Results';
 import GithubPopup from './components/GithubPopup';
+import SettingsModal from './components/SettingsModal';
 import { quizData } from './data/quizData';
 
 export type ViewState = 'dashboard' | 'quiz' | 'results';
@@ -42,14 +43,17 @@ export default function App() {
           <span className="bg-neutral-900 text-white px-2 py-1 rounded-sm text-sm">NSCT</span>
           <span>2026</span>
         </div>
-        {currentView !== 'dashboard' && (
-          <button 
-            onClick={handleReturnToDashboard}
-            className="text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors"
-          >
-            Exit Quiz
-          </button>
-        )}
+        <div className="flex items-center gap-6">
+          <SettingsModal />
+          {currentView !== 'dashboard' && (
+            <button 
+              onClick={handleReturnToDashboard}
+              className="text-sm font-medium text-neutral-500 hover:text-neutral-900 transition-colors"
+            >
+              Exit Quiz
+            </button>
+          )}
+        </div>
       </header>
 
       <main className="max-w-5xl mx-auto px-6 py-12 md:py-20">
