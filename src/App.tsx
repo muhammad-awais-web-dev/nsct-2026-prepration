@@ -1,9 +1,10 @@
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import Dashboard from './components/Dashboard';
 import Quiz from './components/Quiz';
 import Results from './components/Results';
 import GithubPopup from './components/GithubPopup';
-import { quizData } from './data/quizData';
+import SettingsModal from './components/SettingsModal';
+import { quizData, Question } from './data/quizData';
 import { Github } from 'lucide-react';
 
 export type ViewState = 'dashboard' | 'quiz' | 'results';
@@ -13,6 +14,51 @@ export default function App() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [score, setScore] = useState(0);
   const [totalQuestions, setTotalQuestions] = useState(0);
+  const [localQuestions, setLocalQuestions] = useState<Record<string, Question[]>>({});
+
+  useEffect(() => {
+    const stored = localStorage.getItem('nsct_local_questions');
+    if (stored) {
+      try {
+        setLocalQuestions(JSON.parse(stored));
+      } catch (e) {
+        console.error("Failed to parse local questions", e);
+      }
+    }
+  }, []);
+
+  const handleAddLocalQuestions = (categoryName: string, newQuestions: Question[]) => {
+    setLocalQuestions(prev => {
+      const updated = {
+        ...prev,
+        [categoryName]: [...(prev[categoryName] || []), ...newQuestions]
+      };
+      localStorage.setItem('nsct_local_questions', JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const handleClearLocalQuestions = (categoryName: string) => {
+    setLocalQuestions(prev => {
+      const updated = { ...prev };
+      delete updated[categoryName];
+      localStorage.setItem('nsct_local_questions', JSON.stringify(updated));
+      return updated;
+    });
+  };
+
+  const mergedData = useMemo(() => {
+    const merged: Record<string, any> = {};
+    for (const key in quizData) {
+      merged[key] = {
+        ...quizData[key],
+        questions: [...quizData[key].questions, ...(localQuestions[key] || [])],
+        globalCount: quizData[key].questions.length,
+        localCount: localQuestions[key]?.length || 0,
+      };
+    }
+    return merged;
+  }, [localQuestions]);
 
   const handleStartQuiz = (categoryName: string) => {
     setSelectedCategory(categoryName);
@@ -44,6 +90,7 @@ export default function App() {
           <span>2026</span>
         </div>
         <div className="flex items-center gap-6">
+          <SettingsModal />
           {currentView !== 'dashboard' && (
             <button 
               onClick={handleReturnToDashboard}
@@ -57,12 +104,17 @@ export default function App() {
 
       <main className="max-w-5xl mx-auto px-6 py-12 md:py-20 w-full flex-grow">
         {currentView === 'dashboard' && (
-          <Dashboard onStartQuiz={handleStartQuiz} data={quizData} />
+          <Dashboard 
+            onStartQuiz={handleStartQuiz} 
+            data={mergedData} 
+            onClearLocal={handleClearLocalQuestions}
+          />
         )}
         {currentView === 'quiz' && selectedCategory && (
           <Quiz 
-            category={quizData[selectedCategory]} 
+            category={mergedData[selectedCategory]} 
             onFinish={handleFinishQuiz} 
+            onAddLocalQuestions={(questions) => handleAddLocalQuestions(selectedCategory, questions)}
           />
         )}
         {currentView === 'results' && selectedCategory && (
@@ -79,7 +131,7 @@ export default function App() {
       <footer className="text-center py-8 text-neutral-400 text-xs border-t border-neutral-100 mt-auto flex flex-col items-center justify-center gap-4">
         <div>National Skills Competency Test (NSCT) 2026 Preparatory Module</div>
         <a 
-          href="https://github.com" 
+          href="https://github.com/muhammad-awais-web-dev/nsct-2026-prepration" 
           target="_blank" 
           rel="noopener noreferrer"
           className="flex items-center gap-2 text-neutral-500 hover:text-neutral-900 transition-colors"

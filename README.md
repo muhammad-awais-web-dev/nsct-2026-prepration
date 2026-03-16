@@ -12,6 +12,7 @@ The NSCT 2026 is a critical assessment for computing graduates in Pakistan. This
 ### Key Features
 
 - **1000+ Question Database:** Powered by AI to provide a vast and diverse set of questions.
+- **Local Storage Integration:** Save AI-generated questions locally to build your own custom question bank.
 - **Detailed Rationales:** Every answer (correct or incorrect) comes with a clear explanation of the underlying concept.
 - **Minimalist Design:** A focused, monochrome interface with high-contrast feedback (Green/Red) to minimize cognitive load.
 - **Syllabus Aligned:** Questions are weighted and categorized according to the official NSCT 2026 syllabus.

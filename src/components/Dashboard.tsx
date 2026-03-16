@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion';
-import { BookOpen, Target, CheckCircle2 } from 'lucide-react';
-import { Category } from '../data/quizData';
+import { BookOpen, CheckCircle2, Globe, Database, Trash2 } from 'lucide-react';
 
 interface DashboardProps {
   onStartQuiz: (categoryName: string) => void;
-  data: Record<string, Category>;
+  data: Record<string, any>;
+  onClearLocal: (categoryName: string) => void;
 }
 
-export default function Dashboard({ onStartQuiz, data }: DashboardProps) {
+export default function Dashboard({ onStartQuiz, data, onClearLocal }: DashboardProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -41,7 +41,7 @@ export default function Dashboard({ onStartQuiz, data }: DashboardProps) {
           variants={itemVariants}
           className="text-lg text-neutral-500 leading-relaxed"
         >
-          Select a domain below to begin your preparatory evaluation. The target number of questions reflects the syllabus weightage.
+          Select a domain below to begin your preparatory evaluation.
         </motion.p>
         <motion.p
           variants={itemVariants}
@@ -59,37 +59,60 @@ export default function Dashboard({ onStartQuiz, data }: DashboardProps) {
           <motion.div
             key={category.name}
             variants={itemVariants}
-            onClick={() => onStartQuiz(category.name)}
-            className="group relative bg-white border border-neutral-200 rounded-xl p-6 cursor-pointer hover:border-neutral-900 hover:shadow-lg transition-all duration-300 flex flex-col h-full"
+            className="group relative bg-white border border-neutral-200 rounded-xl p-6 hover:border-neutral-900 hover:shadow-lg transition-all duration-300 flex flex-col h-full"
           >
-            <div className="flex justify-between items-start mb-6">
-              <div className="p-2 bg-neutral-100 rounded-lg group-hover:bg-neutral-900 group-hover:text-white transition-colors">
-                <BookOpen className="w-5 h-5" />
+            <div 
+              className="cursor-pointer flex-grow flex flex-col"
+              onClick={() => onStartQuiz(category.name)}
+            >
+              <div className="flex justify-between items-start mb-6">
+                <div className="p-2 bg-neutral-100 rounded-lg group-hover:bg-neutral-900 group-hover:text-white transition-colors">
+                  <BookOpen className="w-5 h-5" />
+                </div>
+                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-neutral-100 text-neutral-800 border border-neutral-200">
+                  {category.weightage} Weight
+                </span>
               </div>
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-neutral-100 text-neutral-800 border border-neutral-200">
-                {category.weightage} Weight
-              </span>
+              
+              <h3 className="text-xl font-bold text-neutral-900 mb-2 leading-tight">
+                {category.name}
+              </h3>
+              
+              <p className="text-sm text-neutral-500 mb-8 flex-grow">
+                Master the fundamentals of this competency to secure your percentage in the NSCT.
+              </p>
             </div>
             
-            <h3 className="text-xl font-bold text-neutral-900 mb-2 leading-tight">
-              {category.name}
-            </h3>
-            
-            <p className="text-sm text-neutral-500 mb-8 flex-grow">
-              Master the fundamentals of this competency to secure your percentage in the NSCT.
-            </p>
-            
-            <div className="flex items-center justify-between pt-4 border-t border-neutral-100 mt-auto">
-              <div className="flex items-center space-x-4 text-xs text-neutral-500">
-                <div className="flex items-center gap-1">
-                  <Target className="w-3.5 h-3.5" />
-                  <span>Target: {category.target}</span>
-                </div>
-                <div className="flex items-center gap-1">
+            <div className="flex flex-col gap-3 pt-4 border-t border-neutral-100 mt-auto">
+              <div className="flex items-center justify-between text-xs text-neutral-500">
+                <div className="flex items-center gap-1 font-medium text-neutral-700">
                   <CheckCircle2 className="w-3.5 h-3.5" />
-                  <span>Available: {category.questions.length}</span>
+                  <span>Total: {category.questions.length}</span>
+                </div>
+                <div className="flex gap-3">
+                  <div className="flex items-center gap-1" title="Global Questions">
+                    <Globe className="w-3.5 h-3.5" />
+                    <span>{category.globalCount}</span>
+                  </div>
+                  <div className="flex items-center gap-1" title="Local Generated Questions">
+                    <Database className="w-3.5 h-3.5" />
+                    <span>{category.localCount}</span>
+                  </div>
                 </div>
               </div>
+              
+              {category.localCount > 0 && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onClearLocal(category.name);
+                  }}
+                  className="flex items-center justify-center gap-1 w-full py-1.5 text-xs font-medium text-red-600 bg-red-50 hover:bg-red-100 rounded-md transition-colors"
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                  Clear Local Questions
+                </button>
+              )}
             </div>
           </motion.div>
         ))}
