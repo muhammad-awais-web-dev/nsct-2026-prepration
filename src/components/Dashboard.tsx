@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion';
-import { BookOpen, CheckCircle2, Globe, Database, Trash2 } from 'lucide-react';
+import { BookOpen, CheckCircle2, Globe, Database, Trash2, Sparkles } from 'lucide-react';
 
 interface DashboardProps {
-  onStartQuiz: (categoryName: string) => void;
+  onStartQuiz: (categoryName: string, mode: 'standard' | 'endless') => void;
   data: Record<string, any>;
   onClearLocal: (categoryName: string) => void;
+  hasApiKey: boolean;
 }
 
-export default function Dashboard({ onStartQuiz, data, onClearLocal }: DashboardProps) {
+export default function Dashboard({ onStartQuiz, data, onClearLocal, hasApiKey }: DashboardProps) {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -61,10 +62,7 @@ export default function Dashboard({ onStartQuiz, data, onClearLocal }: Dashboard
             variants={itemVariants}
             className="group relative bg-white border border-neutral-200 rounded-xl p-6 hover:border-neutral-900 hover:shadow-lg transition-all duration-300 flex flex-col h-full"
           >
-            <div 
-              className="cursor-pointer flex-grow flex flex-col"
-              onClick={() => onStartQuiz(category.name)}
-            >
+            <div className="flex-grow flex flex-col">
               <div className="flex justify-between items-start mb-6">
                 <div className="p-2 bg-neutral-100 rounded-lg group-hover:bg-neutral-900 group-hover:text-white transition-colors">
                   <BookOpen className="w-5 h-5" />
@@ -100,6 +98,24 @@ export default function Dashboard({ onStartQuiz, data, onClearLocal }: Dashboard
                   </div>
                 </div>
               </div>
+
+              <div className="flex flex-col gap-2 mt-2">
+                <button 
+                  onClick={() => onStartQuiz(category.name, 'standard')}
+                  className="w-full py-2 bg-neutral-900 text-white rounded-lg font-medium hover:bg-neutral-800 transition-colors text-sm"
+                >
+                  Standard Practice
+                </button>
+                <button 
+                  onClick={() => onStartQuiz(category.name, 'endless')}
+                  disabled={!hasApiKey}
+                  className={`w-full py-2 rounded-lg font-medium transition-colors flex items-center justify-center gap-2 text-sm ${hasApiKey ? 'bg-indigo-50 text-indigo-600 hover:bg-indigo-100' : 'bg-neutral-100 text-neutral-400 cursor-not-allowed'}`}
+                  title={!hasApiKey ? "Requires Gemini API Key in Settings" : "Endless AI Generated Questions"}
+                >
+                  <Sparkles className="w-4 h-4" />
+                  Endless AI Mode
+                </button>
+              </div>
               
               {category.localCount > 0 && (
                 <button
@@ -107,7 +123,7 @@ export default function Dashboard({ onStartQuiz, data, onClearLocal }: Dashboard
                     e.stopPropagation();
                     onClearLocal(category.name);
                   }}
-                  className="flex items-center justify-center gap-1 w-full py-1.5 text-xs font-medium text-red-600 bg-red-50 hover:bg-red-100 rounded-md transition-colors"
+                  className="flex items-center justify-center gap-1 w-full py-1.5 text-xs font-medium text-red-600 bg-red-50 hover:bg-red-100 rounded-md transition-colors mt-1"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
                   Clear Local Questions

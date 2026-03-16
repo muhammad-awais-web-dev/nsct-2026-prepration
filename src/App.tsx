@@ -15,6 +15,14 @@ export default function App() {
   const [score, setScore] = useState(0);
   const [totalQuestions, setTotalQuestions] = useState(0);
   const [localQuestions, setLocalQuestions] = useState<Record<string, Question[]>>({});
+  const [hasApiKey, setHasApiKey] = useState(!!localStorage.getItem('gemini_api_key'));
+  const [quizMode, setQuizMode] = useState<'standard' | 'endless'>('standard');
+
+  useEffect(() => {
+    const handleKeyChange = () => setHasApiKey(!!localStorage.getItem('gemini_api_key'));
+    window.addEventListener('api_key_changed', handleKeyChange);
+    return () => window.removeEventListener('api_key_changed', handleKeyChange);
+  }, []);
 
   useEffect(() => {
     const stored = localStorage.getItem('nsct_local_questions');
@@ -60,8 +68,9 @@ export default function App() {
     return merged;
   }, [localQuestions]);
 
-  const handleStartQuiz = (categoryName: string) => {
+  const handleStartQuiz = (categoryName: string, mode: 'standard' | 'endless' = 'standard') => {
     setSelectedCategory(categoryName);
+    setQuizMode(mode);
     setCurrentView('quiz');
   };
 
@@ -108,11 +117,14 @@ export default function App() {
             onStartQuiz={handleStartQuiz} 
             data={mergedData} 
             onClearLocal={handleClearLocalQuestions}
+            hasApiKey={hasApiKey}
           />
         )}
         {currentView === 'quiz' && selectedCategory && (
           <Quiz 
             category={mergedData[selectedCategory]} 
+            mode={quizMode}
+            hasApiKey={hasApiKey}
             onFinish={handleFinishQuiz} 
             onAddLocalQuestions={(questions) => handleAddLocalQuestions(selectedCategory, questions)}
           />

@@ -18,6 +18,7 @@ export default function SettingsModal() {
   const handleSave = () => {
     if (apiKey.trim()) {
       localStorage.setItem('gemini_api_key', apiKey.trim());
+      window.dispatchEvent(new Event('api_key_changed'));
       setSavedKey(true);
       setIsOpen(false);
     }
@@ -25,6 +26,7 @@ export default function SettingsModal() {
 
   const handleDelete = () => {
     localStorage.removeItem('gemini_api_key');
+    window.dispatchEvent(new Event('api_key_changed'));
     setApiKey('');
     setSavedKey(false);
   };
